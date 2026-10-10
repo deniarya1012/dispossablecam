@@ -1,0 +1,9 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Uploads, reads and deletes are mediated by server routes. Gallery URLs use per-object download tokens.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
